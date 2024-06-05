@@ -366,7 +366,7 @@ module living_room_framing(){
     translate([ft(12)-7.325,0,0])
     translate([5.5,-5.5,1.5])
       doug_fir()
-    post(5.5,5.5,ft(8)-1.5,VERTICAL_NORTH);
+    #post(3.5,5.5,ft(8)-1.5,VERTICAL_NORTH);
   SE()
     for( i = [0:16:16*8] ){
       translate([i,-5.5,0])
@@ -456,14 +456,13 @@ module guest_room_framing(){
     ptdf_sill()
     exterior_stud(ft(10)+1.75,HORIZONTAL_WEST);
   SW()
-    translate([5.5,ft(10)+1.75-5.5,0])
+    translate([0,ft(10)+1.75-5.5,0])
     ptdf_sill()    
     exterior_stud(ft(9),HORIZONTAL_NORTH);
   SW()
-    translate([ft(9),-5.5,0])
+    translate([ft(9)-5.5,-5.5,0])
     ptdf_sill()    
-    exterior_stud(ft(10)-5.5,HORIZONTAL_WEST);
-
+    exterior_stud(ft(10)-3.5,HORIZONTAL_WEST);
   difference(){
     union(){
       SW()
@@ -473,17 +472,22 @@ module guest_room_framing(){
             exterior_stud(ft(12)-4.5,VERTICAL_WEST);
         }
       SW()
-        for( i = [0:16:16*7] ){
+        for( i = [0:16:16*6] ){
           translate([i,ft(10)-3.75,0])
             doug_fir()
             exterior_stud(ft(12)-4.5,VERTICAL_NORTH);
         }
       SW()
         for( i = [0:16:16*7] ){
-          translate([ft(9),i,0])
+          translate([ft(9)-5.5,i,0])
             doug_fir()
             exterior_stud(ft(12)-4.5,VERTICAL_WEST);
         }
+      SW()
+        translate([ft(9)-1.5,ft(10)-3.75,0])
+        doug_fir()
+        exterior_stud(ft(12)-4.5,VERTICAL_NORTH);
+      
     }
     garage_roof_diff();
   }
@@ -571,7 +575,7 @@ module upper_sills(){
      exterior_stud(ft(10.7),HORIZONTAL_NORTH);
    }
    // Guest
-   translate([0,-5.25,ft(12.3)])
+   translate([-5.5,-5.25,ft(12.3)])
      rotate([-guest_roof_pitch,0,0])
      union(){
      doug_fir()
