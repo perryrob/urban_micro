@@ -114,7 +114,7 @@ module garage_door(header,door){
 
 module guest_door(header,door){
   SW()
-    translate([ft(8),slab_thk])
+    translate([ft(8),0,slab_thk])
         rotate([0,0,180])
     plain_door([32,80],header,door,VERTICAL_NORTH,LH_DOOR);
 }

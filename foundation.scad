@@ -346,9 +346,29 @@ module interior_slab() {
   guest_slab();
 }
 
-interior_slab();
-drive_slab();
-porch_slab();
-door_slab();
+module slab(){
+  union() {
+    interior_slab();
+    drive_slab();
+    porch_slab();
+    door_slab();
+  }
+}
 
 
+module lot(){
+  
+  color([.4,.2,0])
+    translate([-ft(15),-ft(12),-ft(4)+4-6])
+    cube([ft(53),ft(50),ft(4)]);
+  
+}
+
+slab();
+lot();
+
+translate([0,0,-ft(50)])
+difference(){
+  lot();
+  slab();
+}
