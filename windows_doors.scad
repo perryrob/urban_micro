@@ -138,15 +138,24 @@ module north_small_windows(header,window){
 }
 
 module north_kitchen_window(header,window){
+  /* rough opening */
+  h=ft(3.5);
+  w=ft(5);
+
+  /* position VERT_WEST */
+  west=-ft(6)-7;
+  north=-2;
+  elev=ft(3.5);
+
   if(header == NO_HEADER){
     NW()
-      translate([-ft(1),-ft(5),ft(3.5)])
-      window([ft(5),ft(3.5)],header,window,VERTICAL_WEST);
+      translate([north-ft(1),west,elev])
+      window([w,h],header,window,VERTICAL_WEST);
   }
   if(window == WINDOW){
     NW()
-      translate([-2,-ft(5),ft(3.5)])
-      window([ft(5),ft(3.5)],header,window,VERTICAL_WEST);
+      translate([north,west,elev])
+      window([w,h],header,window,VERTICAL_WEST);
   }
 }
 module bedroom_window(header,window){
@@ -161,5 +170,68 @@ module bedroom_window(header,window){
       translate([2,ft(5.5),ft(12)])
       window([ft(7),ft(4)],header,window,VERTICAL_WEST);
   }
- 
 }
+module livingroom_window(header,window){
+  /* rough opening */
+  h=ft(5);
+  w=ft(3);
+
+  /* position VERT_WEST */
+  west=ft(13);
+  north=5.5/2;
+  elev=ft(3);
+
+  if(header == NO_HEADER){
+    SE()
+      translate([north-ft(1),west,elev])
+      window([w,h],header,window,VERTICAL_WEST);
+  }
+  if(window == WINDOW){
+    SE()
+      translate([north,west,elev])
+      window([w,h],header,window,VERTICAL_WEST);
+  }
+}
+module guestroom_window(header,window){
+  /* rough opening */
+  h=ft(5);
+  w=ft(4);
+
+  /* position VERT_WEST */
+  west=ft(21);
+  north=5.5/2;
+  elev=ft(3);
+
+  if(header == NO_HEADER){
+    SE()
+      translate([north-ft(1),west,elev])
+      window([w,h],header,window,VERTICAL_WEST);
+  }
+  if(window == WINDOW){
+    SE()
+      translate([north,west,elev])
+      window([w,h],header,window,VERTICAL_WEST);
+  }
+}
+module slider(header,window){
+  /* rough opening */
+  h=ft(8);
+  w=ft(6);
+  
+  /* position VERT_WEST */
+  west=ft(4);
+  north=5.5/2;
+  elev=0;
+
+  if(header == NO_HEADER){
+    SE()
+      translate([north-ft(1),west,elev])
+      window([w,h],header,window,VERTICAL_WEST);
+  }
+  if(window == WINDOW){
+    SE()
+      translate([north,west,elev])
+      window([w,h],header,window,VERTICAL_WEST);
+  }
+}
+

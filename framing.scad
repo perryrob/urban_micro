@@ -456,13 +456,13 @@ module guest_room_framing(){
     ptdf_sill()
     exterior_stud(ft(10)+1.75,HORIZONTAL_WEST);
   SW()
-    translate([0,ft(10)+1.75-5.5,0])
+    translate([5.5,ft(10)+1.75-5.5,0])
     ptdf_sill()    
-    exterior_stud(ft(9),HORIZONTAL_NORTH);
+    #exterior_stud(ft(9)-5.5,HORIZONTAL_NORTH);
   SW()
     translate([ft(9)-5.5,-5.5,0])
     ptdf_sill()    
-    exterior_stud(ft(10)-3.5,HORIZONTAL_WEST);
+    #exterior_stud(ft(10)-3.5,HORIZONTAL_WEST);
   difference(){
     union(){
       SW()
@@ -479,12 +479,12 @@ module guest_room_framing(){
         }
       SW()
         for( i = [0:16:16*7] ){
-          translate([ft(9)-5.5,i,0])
+          translate([ft(9)-8.5,i,0])
             doug_fir()
             exterior_stud(ft(12)-4.5,VERTICAL_WEST);
         }
       SW()
-        translate([ft(9)-1.5,ft(10)-3.75,0])
+        translate([ft(9)-4.25,ft(10)-3.75,0])
         doug_fir()
         exterior_stud(ft(12)-4.5,VERTICAL_NORTH);
       

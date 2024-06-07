@@ -206,6 +206,9 @@ module NE(){
 }
 // =====================================================
 module main_slab() {
+
+  step=4;
+  
   X()
     concrete()
     cube( MAIN_SLAB );
@@ -223,12 +226,10 @@ module main_slab() {
   
   translate([ft(9), ft(2)+9,0])
     interior_wall_footing(ft(11), 0);
-
-
   translate([ft(11)+8+0.5, ft(3)+6+0.5,slab_thk])
     interior_wood_post_footing();
   SW()    
-    translate([ft(11)+12+0.5,-5.5,slab_thk])
+    translate([ft(11)+12+0.5,-5.5,slab_thk-step])
     rotate([0,0,90])
     wood_column_footing(0);
 
@@ -349,7 +350,8 @@ module interior_slab() {
 module slab(){
   union() {
     interior_slab();
-    drive_slab();
+    translate([0,0,-4])
+      drive_slab();
     porch_slab();
     door_slab();
   }
