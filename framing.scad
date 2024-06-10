@@ -366,7 +366,7 @@ module living_room_framing(){
     translate([ft(12)-7.325,0,0])
     translate([5.5,-5.5,1.5])
       doug_fir()
-    #post(3.5,5.5,ft(8)-1.5,VERTICAL_NORTH);
+    post(3.5,5.5,ft(8)-1.5,VERTICAL_NORTH);
   SE()
     for( i = [0:16:16*8] ){
       translate([i,-5.5,0])
@@ -458,11 +458,11 @@ module guest_room_framing(){
   SW()
     translate([5.5,ft(10)+1.75-5.5,0])
     ptdf_sill()    
-    #exterior_stud(ft(9)-5.5,HORIZONTAL_NORTH);
+    exterior_stud(ft(8)+3.75,HORIZONTAL_NORTH);
   SW()
-    translate([ft(9)-5.5,-5.5,0])
+    translate([ft(9)-8.25,-5.5,0])
     ptdf_sill()    
-    #exterior_stud(ft(10)-3.5,HORIZONTAL_WEST);
+    exterior_stud(ft(10)-3.5,HORIZONTAL_WEST);
   difference(){
     union(){
       SW()

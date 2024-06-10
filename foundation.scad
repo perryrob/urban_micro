@@ -357,6 +357,8 @@ module slab(){
   }
 }
 
+module exterior_jbolts(){
+}
 
 module lot(){
   
