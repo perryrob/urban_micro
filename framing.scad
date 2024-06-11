@@ -10,34 +10,7 @@ main_roof_pitch=8.3;
 guest_roof_pitch=main_roof_pitch / 2;
 porch_roof_pitch=3.58;
 
-/*
-module vert_north_ply(){
-  translate([0,-0.75,0])
-    cube([ft(8),0.75,ft(4)]);
-}
-module vert_west_ply(){
-  translate([0,-0.75,0])
-    cube([0.75,ft(8),ft(4)]);
-}
 
-for(j=[0,4,12]) {
-  for(i=[0,8,16]) {
-    translate([ft(i),0,ft(j)])
-      color([i/16,j/12,0])
-      vert_north_ply();
-    echo(i,j);
-  }
- }
-
-for(j=[0,4,12]) {
-  for(i=[0,8,24]) {
-    translate([0,ft(i),ft(j)])
-      color([i/16,j/12,0])
-      vert_west_ply();
-    echo(i,j);
-  }
- }
-*/
 module versa_lam(){
    color([.5,.2,0]) children();
 }
@@ -334,12 +307,13 @@ module east_west_north_wall(){
 
 module living_room_framing(){
   SE()
-    translate([ft(12)-5.5,ft(3.5),ft(8)])
+    /*main upper floor glue lam */
+    translate([ft(12)-5.5,ft(3.4),ft(8)])
     versa_lam()
-  post(12,5.125,ft(14.5),HORIZONTAL_WEST);
-      translate([ft(10)-5.5,0,ft(8)])
-        versa_lam()
-  post(12,5.125,ft(3.5),HORIZONTAL_WEST);
+    post(12,5.125,ft(14.6),HORIZONTAL_WEST);
+  translate([ft(10)-5.5,0,ft(8)])
+    versa_lam()
+    post(12,5.125,ft(3.5),HORIZONTAL_WEST);
 
   SE()
     for( i = [0:16:16*13] ){
@@ -479,7 +453,7 @@ module guest_room_framing(){
         }
       SW()
         for( i = [0:16:16*7] ){
-          translate([ft(9)-8.5,i,0])
+          translate([ft(9)-8.25,i,0])
             doug_fir()
             exterior_stud(ft(12)-4.5,VERTICAL_WEST);
         }
@@ -622,16 +596,16 @@ module garage_roof(){
     }
   SW()
     doug_fir()
-    translate([ft(18)+1,ft(10)+1.75-5.5,0])
-    post(5.5,5.5,ft(9)+10,VERTICAL_NORTH);
+    translate([ft(18)+1,ft(10)+1.75-5.5,-3])
+    post(5.5,5.5,ft(10)+1,VERTICAL_NORTH);
   SW()
     doug_fir()
-    translate([ft(27)+6.5,ft(10)+1.75-5.5,0])
-    post(5.5,5.5,ft(9)+10,VERTICAL_NORTH);
+    translate([ft(27)+6.5,ft(10)+1.75-5.5,-3])
+    post(5.5,5.5,ft(10)+1,VERTICAL_NORTH);
   SW()
     doug_fir()
-    translate([ft(27)+6.5,0-5.5,0])
-    post(5.5,5.5,ft(11)+2.5,VERTICAL_NORTH);
+    translate([ft(27)+6.5,0-5.5,-3])
+    post(5.5,5.5,ft(12)-6,VERTICAL_NORTH);
   NW()
     versa_lam()
     translate([0,-5.5,ft(11)+3])

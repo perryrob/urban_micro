@@ -74,8 +74,18 @@ module CB46(){
 }
 
 module j_bolt(){
-  color([1,0,0])
-    cylinder(d=5/8,h=8,center=true);
+  dia=5/8;
+  SE()
+    translate([0,0,slab_thk-12+3])
+    color([1,0,0])
+    cylinder(d=dia, h=12);
+  translate([0,0,5.5])
+    color([1,0,0])
+    cylinder(d=2, h=0.125);
+  translate([0,0,5.75])
+    color([1,0,0])
+    cube([1,1,0.5],center=true);
+
 }
 
 module wood_column_footing(position){
@@ -342,6 +352,51 @@ module door_slab(){
     wood_column_footing(1030);  
 }
 
+module exterior_jbolts(){
+  /* East Wall */
+  SE()
+    for(i = [0:34:34*7]) {
+      translate([9+i, 5.5/2 ,0])
+        j_bolt();
+    }
+  /* North Wall */
+  NE()
+    for(i = [0:34:34*6]) {
+      translate([-5.5/2,9+i, ,0])
+        j_bolt();
+    }
+  /* South Wall */
+  SE()
+    for(i = [0:34:34*5]) {
+      translate([5.5/2,11+i, ,0])
+        j_bolt();
+    }
+  SW()
+    for(i = [0:34:34*3]) {
+      translate([5.5/2,8+i, ,0])
+        j_bolt();
+    }
+  /* Guest Walls */
+  SW()
+    for(i = [0:34:34*2]) {
+      translate([8+i,ft(10)-1, ,0])
+        j_bolt();
+    }
+  SW(){
+    for(i = [0:34:34*3]) {
+      translate([ft(9)-5.25,i+6,0])
+        j_bolt();
+    }
+  }
+  /* West Wall */
+  SW(){
+    for(i = [0:34:34*8]) {
+      translate([i+8,-5.5/2,0])
+        j_bolt();
+    }
+  }
+}
+
 module interior_slab() {
   main_slab();
   guest_slab();
@@ -355,10 +410,9 @@ module slab(){
     porch_slab();
     door_slab();
   }
+  exterior_jbolts();
 }
 
-module exterior_jbolts(){
-}
 
 module lot(){
   

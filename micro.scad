@@ -1,5 +1,6 @@
 
 include <framing.scad>
+include <interior_framing.scad>
 include <foundation.scad>
 include <windows_doors.scad>
 
@@ -35,3 +36,4 @@ bedroom_window(HEADER,WINDOW);
 livingroom_window(HEADER,WINDOW);
 guestroom_window(HEADER,WINDOW);
 slider(HEADER,WINDOW);
+
