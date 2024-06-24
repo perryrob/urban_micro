@@ -1,6 +1,7 @@
 
 include <foundation.scad>
 include <TJI.scad>
+include <stair.scad>
 
 HORIZONTAL_NORTH=0;
 HORIZONTAL_WEST=1;
