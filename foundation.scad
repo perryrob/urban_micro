@@ -426,11 +426,3 @@ module lot(){
   
 }
 
-slab();
-lot();
-
-translate([0,0,-ft(50)])
-difference(){
-  lot();
-  slab();
-}

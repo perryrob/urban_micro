@@ -27,18 +27,27 @@ module stringer(run,steps) {
         }
     }
 }
-translate([ft(9.25),5.5,slab_thk+ft(8.75)])
-stringer(ft(13.5),12);
-translate([ft(9.25),5.5+ft(3)-1.5,slab_thk+ft(8.75)])
-stringer(ft(13.5),12);
 
 
-NE()
-translate([-5.5,-5.5+ft(2)+1.5,ft(2)+1.5])
-rotate([0,0,90])
-stringer(ft(4),3);
-
-NE()
-translate([-5.5-ft(3),-5.5+ft(2)+1.5,ft(2)+1.5])
-rotate([0,0,90])
-stringer(ft(4),3);
+module stairs() {
+  translate([ft(9.25),5.5,slab_thk+ft(8.75)])
+    stringer(ft(13.5),12);
+  translate([ft(9.25),5.5+ft(3)+1,slab_thk+ft(8.75)])
+    stringer(ft(13.5),12);
+  
+  
+  NE()
+    translate([-5.5,-5.5+ft(2)+1.5,ft(2)+1.5])
+    rotate([0,0,90])
+    stringer(ft(4),3);
+  
+  NE()
+    translate([-4-ft(3),-5.5+ft(2)+1.5,ft(2)+1.5])
+    rotate([0,0,90])
+    stringer(ft(4),3);
+  
+  
+  NE()
+    translate([-ft(3)-5.5,5.5,ft(2)+1.5])
+    cube([ft(3),ft(3),0.75]);
+}
