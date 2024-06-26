@@ -166,7 +166,7 @@ module interior_stud(length,orientation){
       cube([length,width,thk]);
   }
   if( orientation == VERTICAL_NORTH ){
-    translate([1.5,0,slab_thk+thk])
+    translate([3,-1.25+3.5,slab_thk+thk])
       rotate([0,-90,0])
         cube([length,width,thk]);
   }

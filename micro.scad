@@ -1,6 +1,7 @@
 
 include <framing.scad>
 include <interior_framing.scad>
+include <interior_framing.scad>
 include <foundation.scad>
 include <windows_doors.scad>
 include <stair.scad>
@@ -50,10 +51,10 @@ module structural_framing(){
   living_room_framing();
   guest_room_framing();
   bed_room_framing();
-  // garage_roof();
-  //main_roof();
-  // back_porch_roof();
-  // front_porch_roof();
+  garage_roof();
+  main_roof();
+  back_porch_roof();
+  front_porch_roof();
 
 }
 
@@ -66,7 +67,7 @@ module framing() {
 
 lot();
 slab();
-framing();
-windows_doors(1);
+// framing();
+// windows_doors(1);
 stairs();
 
