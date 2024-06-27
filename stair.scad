@@ -34,7 +34,7 @@ module stairs() {
 
   translate([ft(9.25),5.5,slab_thk+ft(8.75)])
     stringer(ft(13.5),12);
-  translate([ft(9.25),5.5+ft(3)-3.5,slab_thk+ft(8.75)])
+  translate([ft(9.25),5.5+ft(3)+2,slab_thk+ft(8.75)])
     stringer(ft(13.5),12);
   
   

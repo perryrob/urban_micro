@@ -301,10 +301,10 @@ module east_west_north_wall(){
 
 module living_room_framing(){
   SE()
-    /*main upper floor glue lam */
-    translate([ft(12)-5.5,ft(3),ft(8)])
+    /* main upper floor glue lam */
+    translate([ft(12)-5.5,ft(3)+5.5,ft(8)])
     versa_lam()
-    post(12,5.125,ft(15),HORIZONTAL_WEST);
+    post(12,5.125,ft(15)-5.5,HORIZONTAL_WEST);
   translate([ft(10)-5.5,0,ft(8)])
     versa_lam()
     post(12,5.125,ft(3.5),HORIZONTAL_WEST);

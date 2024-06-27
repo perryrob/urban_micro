@@ -120,13 +120,13 @@ module guest_door(header,door){
 }
 
 module main_bathroom_door(header,door){
-  translate([ft(11.5),ft(3)+3.5,slab_thk])
+  translate([ft(11.5),ft(3)+5.5+4,slab_thk])
         rotate([0,0,180])
     plain_door([32,80],header,door,VERTICAL_NORTH,LH_DOOR);
 
 }
 module laundry_slider(header,window) {
-  translate([12,ft(3)+1.75,0])
+  translate([12,ft(3)+6.5,0])
   window([48,80],header,window,VERTICAL_NORTH);
 
 }

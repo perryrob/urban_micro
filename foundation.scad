@@ -151,7 +151,7 @@ module interior_wood_post_footing(){
   translate([0,0,-9])
     concrete()
     cube([ft(2)+6,ft(2)+6,18],center=true);
-  translate([0,-4.75,0])
+  translate([0,-1,0])
     CB46();
 }
 
@@ -235,16 +235,23 @@ module main_slab() {
     translate([-ex_footer_width,0,0])
     exterior_footing(slab_west,1);
   
-  translate([ft(9), ft(2)+9,0])
-    interior_wall_footing(ft(11), 0);
-  translate([ft(11)+8+0.5, ft(3)+6+0.5,slab_thk])
-    interior_wood_post_footing();
+  translate([ft(9)+3,ft(3),0])
+    interior_wall_footing(ft(11)+7, 0);
+  /* ERROR this translation is off */
+    translate([ft(11)+8+0.5, ft(3)+8.25,slab_thk])
+      interior_wood_post_footing();
   SW()    
     translate([ft(11)+12+0.5,-5.5,slab_thk-step])
     rotate([0,0,90])
     wood_column_footing(0);
 
 }
+/* main floor wall test to mid wall*/
+/*
+color([0,01])
+translate([ft(11)+8.5,0,0])
+cube([10,ft(3)+6.5+3.5/2,10]);
+*/
 module guest_slab() {
   SW()
     concrete()
