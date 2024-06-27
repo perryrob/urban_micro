@@ -67,7 +67,7 @@ module framing() {
 
 lot();
 slab();
-// framing();
-// windows_doors(1);
+framing();
+windows_doors(1);
 stairs();
 

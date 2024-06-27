@@ -151,7 +151,8 @@ module interior_wood_post_footing(){
   translate([0,0,-9])
     concrete()
     cube([ft(2)+6,ft(2)+6,18],center=true);
-  CB46();
+  translate([0,-4.75,0])
+    CB46();
 }
 
 module interior_wall_footing(length,rotation){

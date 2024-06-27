@@ -7,7 +7,7 @@ HORIZONTAL_NORTH=0;
 HORIZONTAL_WEST=1;
 VERTICAL_NORTH=2;
 VERTICAL_WEST=3;
-main_roof_pitch=8.3;
+main_roof_pitch=7.8;
 guest_roof_pitch=main_roof_pitch / 2;
 porch_roof_pitch=3.58;
 
@@ -161,17 +161,17 @@ module interior_stud(length,orientation){
       cube([length,width,thk]);
   }
   if( orientation == HORIZONTAL_WEST ){
-    translate([5.5,5.5,slab_thk])
+    translate([width,0,slab_thk])
       rotate([0,0,90])
       cube([length,width,thk]);
   }
   if( orientation == VERTICAL_NORTH ){
-    translate([3,-1.25+3.5,slab_thk+thk])
+    translate([1.5,0,slab_thk+thk])
       rotate([0,-90,0])
         cube([length,width,thk]);
   }
   if( orientation == VERTICAL_WEST ){
-    translate([0,0,slab_thk+thk])
+    translate([0,0,slab_thk])
       rotate([0,-90,-90])
         cube([length,width,thk]);
   }
@@ -244,11 +244,11 @@ module north_wall() {
   NE()
   for( i = [0:16:16*12] ){
     translate([-5.5,i+5.5,0])
-      exterior_stud(ft(16),VERTICAL_WEST);
+      exterior_stud(ft(14)-1.5,VERTICAL_WEST);
   }
   NE()
   translate([-5.5,ft(18)-5.5,0])
-    exterior_stud(ft(16),VERTICAL_WEST);
+    exterior_stud(ft(14)-1.5,VERTICAL_WEST);
 }
 module north_bottom_plate() {
   translate([slab_north-5.5,0,0])
@@ -261,57 +261,50 @@ module west_bottom_plate() {
     east_bottom_plate();
 }
 module east_west_north_wall(){
-  difference(){
     NE()
       union(){
       versa_lam(){
+
       for( i = [0:16:16*10] ){
         translate([-i-1.5,0,0])
-          exterior_stud(ft(16),VERTICAL_NORTH);
+          exterior_stud(ft(14)-1.5+sin(main_roof_pitch)*i,VERTICAL_NORTH);
       }
       SW(){
         translate([0,-5.5,0])
           for( i = [0:16:16*8] ){
             translate([-i-1.5,0,0])
-              exterior_stud(ft(16),VERTICAL_NORTH);
+              exterior_stud(ft(14)-1.5+sin(main_roof_pitch)*i,VERTICAL_NORTH);
           }
       }
     }
-    }
-    roof_diff();
   }
-  difference(){
     union(){
-    NE()
-      translate([-ft(14)+2.5,0,0])
-      versa_lam()
-      exterior_stud(ft(15.65),VERTICAL_NORTH);
-    NW()
-      translate([-ft(12)+2.5,-5.5,0])
-      versa_lam()
-      exterior_stud(ft(16),VERTICAL_NORTH);
+      NE()
+        translate([-ft(14)+2.5,0,0])
+        versa_lam()
+        exterior_stud(ft(15)+9,VERTICAL_NORTH);
+      NW()
+        translate([-ft(12)+2.5,-5.5,0])
+        versa_lam()
+        exterior_stud(ft(15)+5,VERTICAL_NORTH);
     }
-    roof_diff();
-  }
   
   east_top_plate();
   west_top_plate();
   south_top_plate();
 
-  difference(){
-    versa_lam()
-      north_wall();
-    roof_diff();
-  }
+  versa_lam()
+    north_wall();
+
   
 }
 
 module living_room_framing(){
   SE()
     /*main upper floor glue lam */
-    translate([ft(12)-5.5,ft(3.4),ft(8)])
+    translate([ft(12)-5.5,ft(3),ft(8)])
     versa_lam()
-    post(12,5.125,ft(14.6),HORIZONTAL_WEST);
+    post(12,5.125,ft(15),HORIZONTAL_WEST);
   translate([ft(10)-5.5,0,ft(8)])
     versa_lam()
     post(12,5.125,ft(3.5),HORIZONTAL_WEST);
@@ -364,7 +357,7 @@ module upper_floor(){
       versa_lam()
       TJI_230(ft(12)-7, HORIZONTAL_NORTH);
     }
-  translate([1.5,ft(17.25),ft(8)])
+  translate([1.5,ft(17)-6,ft(8)])
     versa_lam()
       TJI_230(ft(12)-7, HORIZONTAL_NORTH);
 
@@ -469,32 +462,32 @@ module guest_room_framing(){
 
 }
 module upper_sills(){
-  // South Wall
+  // NORTH Wall
   delta=3;
   n_wall=14;
   NE()
-    translate([-5.5,-5.5,ft(n_wall)-delta])
+    translate([-5.5,-5.5,ft(n_wall)])
     doug_fir()
     exterior_stud(ft(12)+5.5,HORIZONTAL_WEST);
   NE()
-    translate([-5.5,ft(12),ft(n_wall)-delta])
+    translate([-5.5,ft(12),ft(n_wall)])
     doug_fir()
     exterior_stud(ft(5)+7,HORIZONTAL_WEST);
   NE()
-    translate([-5.5,-5.5,ft(n_wall)-delta+1.5])
+    translate([-5.5,-5.5,ft(n_wall)+1.5])
     doug_fir()
     exterior_stud(ft(12)+7,HORIZONTAL_WEST);
   NE()
-     translate([-5.5,ft(12),ft(n_wall)-delta+1.5])
+     translate([-5.5,ft(12),ft(n_wall)+1.5])
     doug_fir()
      exterior_stud(ft(5)+7,HORIZONTAL_WEST);
 
-   // North Wall
+   // SOUTH Wall
    wall=17.4;
    SE()
     translate([0,-5.5,ft(wall)-delta])
     doug_fir()
-    exterior_stud(ft(12)+5.5,HORIZONTAL_WEST);
+     exterior_stud(ft(12)+5.5,HORIZONTAL_WEST);
    SE()
      translate([0,ft(12),ft(wall)-delta])
      doug_fir()
@@ -512,11 +505,11 @@ module upper_sills(){
    SE()
      translate([-ft(2.1),0,ft(wall)-delta-1])
      doug_fir()
-     exterior_stud(ft(12)+5.5,HORIZONTAL_NORTH);
+     exterior_stud(ft(12),HORIZONTAL_NORTH);
    SE()
      translate([ft(12)-ft(1.7),0,ft(wall)-delta-1])
      doug_fir()
-     exterior_stud(ft(10.7),HORIZONTAL_NORTH);
+     exterior_stud(ft(11),HORIZONTAL_NORTH);
    }
    rotate([0,main_roof_pitch,0]){
    SE()
@@ -526,7 +519,7 @@ module upper_sills(){
    SE()
      translate([ft(12)-ft(1.7),0,ft(wall)-2.5])
      doug_fir()
-     exterior_stud(ft(10.7),HORIZONTAL_NORTH);
+     exterior_stud(ft(11),HORIZONTAL_NORTH);
    }
    // West
    rotate([0,main_roof_pitch,0]){
@@ -537,7 +530,7 @@ module upper_sills(){
    SW()
      translate([ft(12)-ft(1.7),-5.5,ft(wall)-delta-1])
      doug_fir()
-     exterior_stud(ft(10.7),HORIZONTAL_NORTH);
+     exterior_stud(ft(11),HORIZONTAL_NORTH);
    }
    rotate([0,main_roof_pitch,0]){
    SW()
@@ -547,7 +540,7 @@ module upper_sills(){
    SW()
      translate([ft(12)-ft(1.7),-5.5,ft(wall)-2.5])
      doug_fir()
-     exterior_stud(ft(10.7),HORIZONTAL_NORTH);
+     exterior_stud(ft(11),HORIZONTAL_NORTH);
    }
    // Guest
    translate([0,-5.25,ft(12.3)])

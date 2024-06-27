@@ -119,7 +119,17 @@ module guest_door(header,door){
     plain_door([32,80],header,door,VERTICAL_NORTH,LH_DOOR);
 }
 
+module main_bathroom_door(header,door){
+  translate([ft(11.5),ft(3)+3.5,slab_thk])
+        rotate([0,0,180])
+    plain_door([32,80],header,door,VERTICAL_NORTH,LH_DOOR);
 
+}
+module laundry_slider(header,window) {
+  translate([12,ft(3)+1.75,0])
+  window([48,80],header,window,VERTICAL_NORTH);
+
+}
 module north_small_windows(header,window){
   if(header == NO_HEADER){
     NE()

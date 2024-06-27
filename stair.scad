@@ -5,6 +5,7 @@ module stringer(run,steps) {
   tread_width = 10.5;
   tread_rise = 7;
   stringer_angle = 33.7;
+
   rotate([0,stringer_angle,0])
     difference(){
       difference(){
@@ -30,9 +31,10 @@ module stringer(run,steps) {
 
 
 module stairs() {
+
   translate([ft(9.25),5.5,slab_thk+ft(8.75)])
     stringer(ft(13.5),12);
-  translate([ft(9.25),5.5+ft(3)+1,slab_thk+ft(8.75)])
+  translate([ft(9.25),5.5+ft(3)-3.5,slab_thk+ft(8.75)])
     stringer(ft(13.5),12);
   
   
@@ -50,4 +52,6 @@ module stairs() {
   NE()
     translate([-ft(3)-5.5,5.5,ft(2)+1.5])
     cube([ft(3),ft(3),0.75]);
+
+  
 }
