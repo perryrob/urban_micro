@@ -8,10 +8,10 @@ VERTICAL_WEST=3;
 
 module tji_rim_board(length,orientation){
   
-  w=1.5;
+  w=1.25;
   h=11+7/8;
 
-  echo("{name='Rim Board 2x11 7/8'",",w=",w,",h=",h,",length=",length/12,"type='engineered lumber'}");
+  echo("{name='Rim Board 1x1/4x11 7/8'",",w=",w,",h=",h,",length=",length/12,"type='engineered lumber'}");
   if( orientation == HORIZONTAL_NORTH ){
     translate([0,0,slab_thk])
       versa_lam()

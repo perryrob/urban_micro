@@ -75,7 +75,7 @@ framing();
 windows_doors(1);
 stairs();
 under_slab_penetrations();
-/*
+
 EW_wall_sheathing();
 S_wall_sheathing();
 N_wall_sheathing();
@@ -85,7 +85,8 @@ upstairs_floor();
 roof_sheathing();
 porch_door_roof();
 garage_tg_roof();
-*/
+
+
 /*
 translate([0,0,-ft(50)]) {
   difference() {

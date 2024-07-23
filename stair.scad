@@ -35,7 +35,7 @@ module stringer(run,steps) {
 
 module stairs() {
 
-  echo("{name='Simpson Hanger 2x'",",w=",1.5,",h=",11.5,",qty=2, type='metal hanger'}");
+  echo("{name='Simpson LUS26Z Hangar'",",w=",1.5,",h=",11.5,",qty=2, type='metal hanger'}");
   
   translate([ft(9.25),5.5,slab_thk+ft(8.75)])
     stringer(ft(13.5),12);

@@ -46,6 +46,8 @@ module guest_roof_joist(length,orientation){
   width=1.5;
   thk=11.5;
   echo("{name='2x12'",",w=",thk,",h=",width,",length=",length/12,"type='board'}");
+   echo("{name='Simpson HUS212-2', type='bracket', qty=1}");
+   echo("{name='Simpson H3', type='bracket', qty=1}");
   if( orientation == HORIZONTAL_NORTH ){
     translate([0,0,slab_thk])
       doug_fir()
@@ -220,18 +222,18 @@ module south_top_plate(){
 }
 
 module east_bottom_plate() {
-  echo("{toggle=TREATED}");
+  echo("{toggle=TREATED_MCA/GREEN}");
   exterior_stud(ft(12),HORIZONTAL_NORTH);
   translate([ft(12),0,0])
     exterior_stud(ft(12)-2.75,HORIZONTAL_NORTH);
-  echo("{toggle='NOT_TREATED'}");
+  echo("{toggle='NOT_TREATED_MCA/GREEN'}");
 }
 module south_bottom_plate() {
-  echo("{toggle='TREATED'}");
+  echo("{toggle='TREATED_MCA/GREEN'}");
   exterior_stud(ft(12),HORIZONTAL_WEST);
   translate([0,ft(12),0])
     exterior_stud(ft(6)+0.25-5.5,HORIZONTAL_WEST);
-  echo("{toggle='NOT_TREATED'}");
+  echo("{toggle='NOT_TREATED_MCA/GREEN'}");
 }
 
 module roof_diff(){
@@ -264,7 +266,7 @@ module north_bottom_plate() {
     south_bottom_plate();
 }
 module west_bottom_plate() {
-  echo("{toggle='TREATED'}");
+  echo("{toggle='TREATED_MCA/GREEN'}");
   translate([0,slab_west-5.5,0])
     doug_fir()    
     east_bottom_plate();
@@ -274,13 +276,13 @@ module west_bottom_plate() {
     //translate([ft(14.75),ft(-10)-5.5,0])
     translate([ft(14.75)-2.5/2,ft(-10),0])
     interior_stud(ft(10)-5.5,HORIZONTAL_WEST);
-  echo("{toggle='NOT_TREATED'}");
+  echo("{toggle='NOT_TREATED_MCA/GREEN'}");
 }
 module east_west_north_wall(){
     NE()
       union(){
       versa_lam(){
-        echo("{toggle='VERSA_LAM'}");
+        echo("{toggle='VERSA_STUD_1.7_2400}");
       for( i = [0:16:16*10] ){
         translate([-i-1.5,0,0])
           exterior_stud(ft(14)-1.5+sin(main_roof_pitch)*i,VERTICAL_NORTH);
@@ -293,29 +295,30 @@ module east_west_north_wall(){
           }
       }
     }
-      echo("{toggle='NOT_VERSA_LAM'}");
+      echo("{toggle='NOT_VERSA_STUD'}");
   }
     union(){
       NE()
         translate([-ft(14)+2.5,0,0])
         versa_lam()
-        echo("{toggle='VERSA_LAM'}");
+        echo("{toggle='VERSA_STUD_1.7_2400}");
         exterior_stud(ft(15)+9,VERTICAL_NORTH);
       NW()
         translate([-ft(12)+2.5,-5.5,0])
         versa_lam()
-        echo("{toggle='VERSA_LAM'}");
+        echo("{toggle='NOT_VERSA_STUD'}");
         exterior_stud(ft(15)+5,VERTICAL_NORTH);
     }
-    echo("{toggle='NOT_VERSA_LAM'}");
+    echo("{toggle='NOT_VERSA_STUD'}");
+
   east_top_plate();
   west_top_plate();
   south_top_plate();
 
   versa_lam()
-    echo("{toggle='VERSA_LAM'}");
+    echo("{toggle='VERSA_STUD_1.7_2400}");
     north_wall();
-    echo("{toggle='NOT_VERSA_LAM'}");
+    echo("{toggle='NOT_VERSA_STUD'}");
 }
 
 module living_room_framing(){
@@ -370,12 +373,14 @@ module upper_floor(){
     for( i = [0:16:16*1] ){
     translate([1.5,i+5.5,ft(8)])
       versa_lam()
+      echo("{name='Simpson ITS2.37/11.88 Top Flange Hanger', type='bracket', qty=1}");
       TJI_230(ft(10)-7, HORIZONTAL_NORTH);
     }
   SE()
     for( i = [0:16:16*9] ){
     translate([1.5,i+42,ft(8)])
       versa_lam()
+      echo("{name='Simpson ITS2.37/11.88 Top Flange Hanger', type='bracket', qty=1}");
       TJI_230(ft(12)-7, HORIZONTAL_NORTH);
     }
   translate([1.5,ft(17)-6,ft(8)])
@@ -443,7 +448,7 @@ module guest_room_framing(){
   SW()
     translate([0,-5.5,0])
     ptdf_sill()
-    echo("{toggle='TREATED'}");
+    echo("{toggle='TREATED_MCA/GREEN'}");
     exterior_stud(ft(10)+1.75,HORIZONTAL_WEST);
   SW()
     translate([5.5,ft(10)+1.75-5.5,0])
@@ -453,7 +458,7 @@ module guest_room_framing(){
     translate([ft(9)-8.25,-5.5,0])
     ptdf_sill()    
     exterior_stud(ft(10)-3.5,HORIZONTAL_WEST);
-  echo("{toggle='NOT_TREATED'}");
+  echo("{toggle='NOT_TREATED_MCA/GREEN'}");
   difference(){
     union(){
       SW()
@@ -618,7 +623,6 @@ module garage_roof(){
   echo("{toggle='NOT_GLUE_LAM'}");
   SW()
     for( i = [0:24:24*13] ){
-      echo("{name='Simpson H3', type='bracket', qty=2}");
       translate([i+6.2,-5,base_of_ledger+.75])
         doug_fir()
         rotate([-guest_roof_pitch,0,0])
@@ -650,7 +654,7 @@ module main_roof(){
       translate([-24.2,i+10,ft(18)-3])
       rotate([0,main_roof_pitch,0])
         TJI_560(ft(28),HORIZONTAL_NORTH);
-    echo("{name='Simpson H3', type='bracket', qty=2}");
+    echo("{name='Simpson H8', type='bracket', qty=2}");
   }
   // Extra for soffets
   EXTRA()
