@@ -2,6 +2,8 @@
 include <framing.scad>
 include <windows_doors.scad>
 
+
+
 module living_room_post(){
   SE()
     translate([ft(11)+8.5,ft(3)+5.5,0])
@@ -49,7 +51,7 @@ module bottom_wall(){
     translate([i+ft(11)+10,ft(3)+5.5,0])
       interior_stud(ft(8)-1.5-cos(33.7)*i,VERTICAL_NORTH);
   }
-  /* fridege wall */
+  /* fridge wall */
   color([0,1,0])
     translate([ft(23.25)-ft(2.5),ft(9),0])
     interior_stud(ft(2.5),HORIZONTAL_NORTH);

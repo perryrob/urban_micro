@@ -18,7 +18,7 @@ p_slab_west = ft(18)+0.25;
 dr_slab_north = ft(6)+1+0.5;
 dr_slab_west = ft(5)+7+0.5;
 
-ex_footer_width=ft(1)+6;
+ex_footer_width=ft(1);
 
 toe_down_width=8;
 
@@ -32,6 +32,8 @@ module black_steel(){
 }
 
 module APVB66() {
+  echo("{name='Simpson 4x4 APVB66', type='bracket', qty=1}");
+  echo("{name='5/8 J-Bolt', type='jbolt', length=8, qty=1}");
   black_steel()
     union(){
     cube([5,5.5,0.75]);
@@ -53,6 +55,7 @@ module APVB66() {
   }
 }
 module CB46(){
+  echo("{name='Simpson 4x4 CB46', type='bracket', qty=1}");
   black_steel()
     difference(){
     union(){
@@ -74,6 +77,7 @@ module CB46(){
 }
 
 module j_bolt(){
+  echo("{name='1/2 J-Bolt', type='jbolt', length=12, qty=1}");
   dia=1/2;
   SE()
     translate([0,0,slab_thk-12+3])
@@ -215,6 +219,10 @@ module NE(){
   X()
     translate([slab_north,0,0]) children();
 }
+module EXTRA(){
+  X()
+    translate([0,-ft(10),0]) children();
+}
 // =====================================================
 module main_slab() {
 
@@ -262,11 +270,11 @@ module guest_slab() {
     exterior_footing(g_slab_north,0);
 
   SW()
-    exterior_footing(g_slab_north,1);
+    exterior_footing(g_slab_north+12,1);
 
   SW()
     translate([g_slab_north-ex_footer_width,0,0])
-    exterior_footing(g_slab_north,1);
+    exterior_footing(g_slab_north+12,1);
 
 }
 module drive_slab() {
@@ -415,6 +423,7 @@ module interior_slab() {
 }
 
 module slab(){
+  echo("{name='Simpson LSTHD8', type='strap', length=8, qty=10}");
   union() {
     interior_slab();
     translate([0,0,-4])

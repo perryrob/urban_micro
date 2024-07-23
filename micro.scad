@@ -1,10 +1,11 @@
 
 include <framing.scad>
+include <sheathing.scad>
 include <interior_framing.scad>
 include <foundation.scad>
 include <windows_doors.scad>
 include <stair.scad>
-
+include <plumbing.scad>
 
 module site(){  
   translate([0,0,-ft(50)])
@@ -43,20 +44,23 @@ module structural_framing(){
   
   upper_sills();
   bottom_plate();
+
   upper_floor();
-  
   east_west_north_wall();
   
   living_room_framing();
   guest_room_framing();
+
   bed_room_framing();
   garage_roof();
   main_roof();
   back_porch_roof();
   front_porch_roof();
+
 }
 
 module framing() {
+
   difference() {
     structural_framing();
     windows_doors(0);
@@ -70,9 +74,24 @@ slab();
 framing();
 windows_doors(1);
 stairs();
-
-translate([0,0,-ft(50)])
-difference() {
-  lot();
-  slab();
+under_slab_penetrations();
+/*
+EW_wall_sheathing();
+S_wall_sheathing();
+N_wall_sheathing();
+N_Guest_wall_sheathing();
+W_Guest_wall_sheathing();
+upstairs_floor();
+roof_sheathing();
+porch_door_roof();
+garage_tg_roof();
+*/
+/*
+translate([0,0,-ft(50)]) {
+  difference() {
+    lot();
+    slab();
+  }
+  under_slab_penetrations();
 }
+*/

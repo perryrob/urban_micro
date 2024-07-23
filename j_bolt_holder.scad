@@ -45,41 +45,52 @@ translate([in(LUMBER_W),0,in(0)])
 difference(){
   difference(){
     difference(){
-      union(){
-        hull(){
-          translate([J_BOLT_DIA,J_BOLT_DIA,0])
-            cylinder(r=J_BOLT_DIA,h=in(T));
-          translate([J_BOLT_DIA,in(W)-J_BOLT_DIA,0])
-            cylinder(r=J_BOLT_DIA,h=in(T));
-          translate([in(L)-J_BOLT_DIA,J_BOLT_DIA,0])
-            cylinder(r=J_BOLT_DIA,h=in(T));
-          translate([in(L)-J_BOLT_DIA,in(W)-J_BOLT_DIA,0])
-            cylinder(r=J_BOLT_DIA,h=in(T));
-        }
-        translate([in(LUMBER_W)+in(LUMBER_H/2),in(W/2),0]){
-          cylinder(r=J_BOLT_DIA,h=in(LUMBER_W));
-        }
-        translate([in(1.5),in(W/2)-in(T/2),0]){
-          difference(){
-            cube([in(2.5),in(T),in(LUMBER_W)]);
-            translate([0,-1,0])
-              rotate([0,-30,0])
-              cube([in(6),in(W),in(6)]);
+      difference(){
+        difference(){
+          union(){
+            hull(){
+              translate([J_BOLT_DIA,J_BOLT_DIA,0])
+                cylinder(r=J_BOLT_DIA,h=in(T));
+              translate([J_BOLT_DIA,in(W)-J_BOLT_DIA,0])
+                cylinder(r=J_BOLT_DIA,h=in(T));
+              translate([in(L)-J_BOLT_DIA,J_BOLT_DIA,0])
+                cylinder(r=J_BOLT_DIA,h=in(T));
+              translate([in(L)-J_BOLT_DIA,in(W)-J_BOLT_DIA,0])
+                cylinder(r=J_BOLT_DIA,h=in(T));
+            }
+            translate([in(LUMBER_W)+in(LUMBER_H/2),in(W/2),0]){
+              cylinder(r=J_BOLT_DIA,h=in(LUMBER_W));
+            }
+            translate([in(1.5),in(W/2)-in(T/2),0]){
+              difference(){
+                cube([in(2.5),in(T),in(LUMBER_W)]);
+                translate([0,-1,0])
+                  rotate([0,-30,0])
+                  cube([in(6),in(W),in(6)]);
+              }
+            }
           }
+          translate([in(3.325),0,in(2.3*T)])
+            rotate([-90,0,0])
+            cylinder(r=in(T),h=100);
         }
+        translate([in(LUMBER_W)+in(LUMBER_H/2),in(W/2),in(-8)])
+          j_bolt();
       }
-    translate([in(3.325),0,in(2.3*T)])
-      rotate([-90,0,0])
-      cylinder(r=in(T),h=100);
+      union(){
+        translate([in(LUMBER_W/2)-8,in(LUMBER_W/2)-9,-25])
+          nail();
+        translate([in(LUMBER_W/2)+8,in(LUMBER_W/2)+10,-25])
+          nail();
+      }
+      translate([0,in(W/2),0])
+        cube([in(0.25),in(0.125/2),in(2)],center=true);
     }
-    translate([in(LUMBER_W)+in(LUMBER_H/2),in(W/2),in(-8)])
-      j_bolt();
+    translate([in(LUMBER_W),0,0])
+      cube([in(0.125/2),in(0.25),in(2)],center=true);
   }
-  union(){
-    translate([in(LUMBER_W/2)-8,in(LUMBER_W/2)-8,-25])
-      nail();
-    translate([in(LUMBER_W/2)+8,in(LUMBER_W/2)+12,-25])
-      nail();
-  }
+  translate([in(LUMBER_W),in(W),0])
+    cube([in(0.125/2),in(0.25),in(2)],center=true);
+
 }
 

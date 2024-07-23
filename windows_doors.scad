@@ -22,6 +22,7 @@ module window(size,header,show_window,orientation) {
       cube([ft(2),size[0],size[1]]);
   }
   if(show_window == WINDOW){
+    echo("{name='Window',w=",size[0],",h=",size[1],"type='window'}");
     color([0.5,0.5,0.5]){
       if(orientation == VERTICAL_NORTH)
         cube([size[0],ft(0.1),size[1]]);
@@ -50,6 +51,7 @@ module door_def(size,header,show_door,orientation,type){
               translate([0,0,h-jam_t])
                 cube([jam_w,w,jam_t]);
               if(type == RH_DOOR){
+                echo("{name='RH_Door',w=",size[0],",h=",size[1],"type='door'}");
                 translate([jam_t/2,jam_t,jam_t])
                   rotate([0,0,door_angle])
                   difference(){          
@@ -60,6 +62,7 @@ module door_def(size,header,show_door,orientation,type){
                 }
               }
               if(type == LH_DOOR){
+                echo("{name='LH_Door',w=",size[0],",h=",size[1],"type='door'}");
                 translate([jam_t/2,jam_t,jam_t])
                   rotate([0,0,-door_angle])
                   difference(){      
