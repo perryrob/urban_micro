@@ -373,14 +373,14 @@ module upper_floor(){
     for( i = [0:16:16*1] ){
     translate([1.5,i+5.5,ft(8)])
       versa_lam()
-      echo("{name='Simpson ITS2.37/11.88 Top Flange Hanger', type='bracket', qty=1}");
+      echo("{name='Simpson ITS2.37/11.88 Top Flange Hanger', type='bracket', qty=1}")
       TJI_230(ft(10)-7, HORIZONTAL_NORTH);
     }
   SE()
     for( i = [0:16:16*9] ){
     translate([1.5,i+42,ft(8)])
       versa_lam()
-      echo("{name='Simpson ITS2.37/11.88 Top Flange Hanger', type='bracket', qty=1}");
+      echo("{name='Simpson ITS2.37/11.88 Top Flange Hanger', type='bracket', qty=1}")
       TJI_230(ft(12)-7, HORIZONTAL_NORTH);
     }
   translate([1.5,ft(17)-6,ft(8)])
@@ -615,11 +615,11 @@ module garage_roof(){
   SW()
     translate([ft(9),ft(10)-3.125,ft(10.5)-8.5])
     versa_lam()
-    #post(9.75,5+1/2,ft(8)+ft(1),HORIZONTAL_NORTH);
+    post(9.75,5+1/2,ft(8)+ft(1),HORIZONTAL_NORTH);
   SW()
     translate([ft(18),ft(10)-3.125,ft(10.5)-8.5])
     versa_lam()
-    #post(9.75,5+1/2,ft(10)+ft(1),HORIZONTAL_NORTH);
+    post(9.75,5+1/2,ft(10)+ft(1),HORIZONTAL_NORTH);
   echo("{toggle='NOT_GLUE_LAM'}");
   SW()
     for( i = [0:24:24*13] ){
@@ -644,7 +644,7 @@ module garage_roof(){
   NW()
     versa_lam()
     translate([0,-5.5,ft(11)+3])
-    #post(9.75,5+1/2,ft(4)+ft(1),HORIZONTAL_NORTH);
+    post(9.75,5+1/2,ft(4)+ft(1),HORIZONTAL_NORTH);
   echo("{toggle='NOT_GLUE_LAM'}");
 }
 module main_roof(){
